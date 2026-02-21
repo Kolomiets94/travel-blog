@@ -1,0 +1,25 @@
+// Цвета
+$color-primary: #ffa902;
+$color-primary-hover: #f3a100;
+$color-white: #ffffff;
+$color-black: #141414;
+$color-gray: #868383;
+$color-gray-light: #d9d9d9;
+$color-gray-bg: #f9f9f9;
+$color-error: #ff4d4f;
+$color-overlay: rgba(0, 0, 0, 0.7);
+$color-modal-overlay: rgba(0, 0, 0, 0.5);
+
+// Шрифты
+$font-primary: "Poppins", sans-serif;
+$font-logo: "Montserrat", sans-serif;
+
+// Размеры контейнера
+$container-width: 1172px;
+$container-padding: 373px;
+
+// Медиа-запросы
+$breakpoint-mobile: 576px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 992px;
+$breakpoint-large: 1200px;

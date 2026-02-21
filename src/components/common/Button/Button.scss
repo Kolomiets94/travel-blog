@@ -1,0 +1,56 @@
+@import "../../../styles/variables";
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 19px 30px;
+  gap: 10px;
+  border-radius: 10px;
+  font-family: $font-primary;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 13px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--primary {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &:hover:not(:disabled) {
+      background-color: $color-primary-hover;
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    border: 2px solid $color-primary;
+    color: $color-primary;
+
+    &:hover:not(:disabled) {
+      background-color: rgba($color-primary, 0.1);
+    }
+  }
+
+  &--back {
+    background-color: transparent;
+    border: 2px solid $color-primary;
+    color: $color-primary;
+
+    .btn__icon {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: rgba($color-primary, 0.1);
+    }
+  }
+}

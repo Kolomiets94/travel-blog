@@ -1,0 +1,80 @@
+@import "../../../styles/variables";
+
+.form-field {
+  width: 100%;
+  margin-bottom: 24px;
+
+  &__label-wrapper {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+
+    .required-star {
+      font-family: "SimSong", sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      text-align: right;
+      color: $color-error;
+    }
+
+    .form-field__label {
+      font-family: $font-primary;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid $color-gray-light;
+    border-radius: 2px;
+    padding: 5px 12px;
+    font-family: $font-primary;
+    font-size: 14px;
+    line-height: 22px;
+
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+    }
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 98px;
+  }
+
+  &--error {
+    input,
+    textarea {
+      border-color: $color-error;
+    }
+  }
+
+  &__error {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: $color-error;
+    margin-top: 1px;
+  }
+
+  &__counter {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.25);
+    margin-top: 1px;
+  }
+}

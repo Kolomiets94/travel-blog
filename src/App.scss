@@ -1,0 +1,25 @@
+@import "./styles/variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-primary;
+  background-color: $color-gray-bg;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}

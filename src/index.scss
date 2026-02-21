@@ -1,0 +1,58 @@
+@import "normalize.css";
+@import "./styles/variables";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* Базовый размер шрифта */
+}
+
+body {
+  background-color: $color-gray-bg;
+  font-family: $font-primary;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $color-black;
+}
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+
+/* Убираем лишние отступы у списков */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Убираем подчеркивание у ссылок по умолчанию */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Стили для кнопок */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Убираем обводку у элементов при фокусе (но оставляем для доступности) */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
+}

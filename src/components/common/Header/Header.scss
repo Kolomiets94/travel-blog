@@ -1,0 +1,164 @@
+@import "../../../styles/variables";
+
+.header {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+
+  &__container {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 29px 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: block;
+    text-decoration: none;
+
+    img {
+      width: 140px;
+      height: auto;
+
+      @media (min-width: $breakpoint-tablet) {
+        width: 181.57px;
+      }
+    }
+  }
+
+  &__login {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $color-white;
+    text-decoration: none;
+    white-space: nowrap;
+
+    @media (min-width: $breakpoint-tablet) {
+      font-size: 16px;
+      line-height: 29px;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__user {
+    position: relative;
+  }
+
+  &__user-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: $color-white;
+
+    @media (min-width: $breakpoint-tablet) {
+      gap: 8px;
+    }
+  }
+
+  &__avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid $color-white;
+
+    @media (min-width: $breakpoint-tablet) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &__user-name {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: $color-white;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @media (min-width: $breakpoint-tablet) {
+      font-size: 14px;
+      max-width: 150px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      font-size: 16px;
+      max-width: 200px;
+    }
+  }
+
+  &__arrow {
+    width: 10px;
+    height: 8px;
+    transition: transform 0.2s;
+
+    @media (min-width: $breakpoint-tablet) {
+      width: 14px;
+      height: 11px;
+    }
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    width: 120px;
+    background: $color-white;
+    border-radius: 6px;
+    padding: 6px 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    @media (min-width: $breakpoint-tablet) {
+      top: 40px;
+      width: 150px;
+      padding: 8px 0;
+    }
+  }
+
+  &__dropdown-item {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #262626;
+    background: none;
+    border: none;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 6px 12px;
+    width: 100%;
+
+    @media (min-width: $breakpoint-tablet) {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+
+    &:hover {
+      background-color: $color-gray-bg;
+      color: $color-primary;
+    }
+  }
+}
