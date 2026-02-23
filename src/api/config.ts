@@ -1,8 +1,5 @@
 import axios from "axios";
-import { STORAGE_KEYS } from "../utils/constants";
-
-const API_BASE_URL =
-  process.env.REACT_APP_API_URL || "http://localhost:3001/api";
+import { API_BASE_URL, STORAGE_KEYS } from "../utils/constants";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -11,6 +8,7 @@ const api = axios.create({
   },
 });
 
+// Добавляем токен к каждому запросу
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem(STORAGE_KEYS.TOKEN);
   if (token) {
@@ -19,6 +17,7 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Обработка ошибок
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -28,7 +27,7 @@ api.interceptors.response.use(
       window.location.href = "/login";
     }
     return Promise.reject(error);
-  },
+  }
 );
 
 export default api;

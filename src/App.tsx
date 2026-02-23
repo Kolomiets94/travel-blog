@@ -1,19 +1,24 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
-import ProtectedRoute from "./components/common/ProtectedRoute";
-import Header from "./components/common/Header/Header";
-import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/Auth/LoginPage";
-import RegisterPage from "./pages/Auth/RegisterPage";
-import PostPage from "./pages/Post/PostPage";
-import CreatePostPage from "./pages/CreatePostPage/CreatePostPage";
-import ProfilePage from "./pages/Profile/ProfilePage";
-import "./App.scss";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/common/ProtectedRoute';
+import Header from './components/common/Header/Header';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/Auth/LoginPage';
+import RegisterPage from './pages/Auth/RegisterPage';
+import PostPage from './pages/Post/PostPage';
+import CreatePostPage from './pages/CreatePostPage/CreatePostPage';
+import ProfilePage from './pages/Profile/ProfilePage';
+import './App.scss';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <AuthProvider>
         <Header />
         <Routes>

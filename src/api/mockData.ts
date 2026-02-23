@@ -1,122 +1,133 @@
-import { Post, User } from "../types";
+import { Post, Comment, User } from '../types';
 
-const initialUsers: User[] = [
+export const mockUsers: User[] = [
   {
     id: 1,
-    email: "test@test.com",
-    fullName: "Тестовый Пользователь",
-    city: "Москва",
-    bio: "Тестовый пользователь для входа",
-    avatar: "/assets/images/Ellipse1.png",
+    full_name: 'Тестовый Пользователь',
+    email: 'test@example.com',
+    city: 'Москва',
+    country: 'Россия',
+    bio: 'Путешественник со стажем',
+    photo: '/assets/images/Ellipse 1.png'
   },
   {
     id: 2,
-    email: "Kolomiets94@yandex.ru",
-    fullName: "Коломиец Александр",
-    city: "Москва",
-    bio: "Путешественник и фотограф",
-    avatar: "/assets/images/Ellipse1.png",
+    full_name: 'Анна Петрова',
+    email: 'anna@example.com',
+    city: 'Санкт-Петербург',
+    country: 'Россия',
+    bio: 'Фотограф и блогер',
+    photo: '/assets/images/Ellipse 1.png'
   },
+  {
+    id: 3,
+    full_name: 'Александр Коломиец',
+    email: 'Kolomiets94@yandex.ru',
+    city: 'Москва',
+    country: 'Россия',
+    bio: 'Люблю путешествовать',
+    photo: '/assets/images/Ellipse 1.png'
+  }
 ];
 
-const loadUsers = (): User[] => {
-  const savedUsers = localStorage.getItem("mockUsers");
-  if (savedUsers) {
-    try {
-      return JSON.parse(savedUsers);
-    } catch (e) {
-      console.error("Failed to parse saved users", e);
-    }
-  }
-  return [...initialUsers];
-};
-
-const saveUsers = (users: User[]) => {
-  localStorage.setItem("mockUsers", JSON.stringify(users));
-};
-
-export let mockUsers: User[] = loadUsers();
-
-export const updateMockUsers = (newUsers: User[]) => {
-  mockUsers = newUsers;
-  saveUsers(newUsers);
+const getISODate = (daysAgo: number = 0) => {
+  const date = new Date();
+  date.setDate(date.getDate() - daysAgo);
+  return date.toISOString();
 };
 
 export const mockPosts: Post[] = [
   {
     id: 1,
-    title: "Один зимний день в Венеции",
-    content:
-      "Говорят, что Венецию покинуло 70% местных жителей. Говорят, что это из-за сверх туризма. Еще говорят, что Венеция уходит под воду.",
-    excerpt: "Говорят, что Венецию покинуло 70% местных жителей...",
-    country: "Италия",
-    city: "Венеция",
-    image: "/assets/images/Rectangle17.png",
-    author: mockUsers[0],
-    createdAt: new Date().toISOString(),
-    comments: [],
+    title: 'Один зимний день в Венеции',
+    description: 'Говорят, что Венецию покинуло 70% местных жителей. Говорят, что это из-за сверх туризма. Еще говорят, что Венеция уходит под воду. Но даже несмотря на все эти разговоры, город продолжает очаровывать миллионы туристов своей уникальной атмосферой, каналами и архитектурой.',
+    excerpt: 'Говорят, что Венецию покинуло 70% местных жителей...',
+    country: 'Италия',
+    city: 'Венеция',
+    photo: '/assets/images/Rectangle 17.png',
+    userInfo: mockUsers[0],
+    created_at: getISODate(15),
+    comments: [
+      {
+        id: 1,
+        author_name: 'Анна Петрова',
+        comment: 'Прекрасное место! Обязательно вернусь сюда еще раз. Атмосфера невероятная, особенно в межсезонье.',
+        created_at: getISODate(14)
+      },
+      {
+        id: 2,
+        author_name: 'Александр Коломиец',
+        comment: 'Спасибо за пост! Очень живо описали. А где именно останавливались?',
+        created_at: getISODate(13)
+      }
+    ]
   },
   {
     id: 2,
-    title: "Фуншал. Расслабленный и броский",
-    content:
-      "Обзорно о замках Фуншала, музеях, скульптурах и нарядных улицах центра.",
-    excerpt: "Обзорно о замках Фуншала, музеях, скульптурах...",
-    country: "Португалия",
-    city: "Фуншал",
-    image: "/assets/images/Rectangle18.png",
-    author: mockUsers[0],
-    createdAt: new Date().toISOString(),
-    comments: [],
+    title: 'Фуншал. Расслабленный и броский',
+    description: 'Обзорно о замках Фуншала, музеях, скульптурах и нарядных улицах центра. Столица Мадейры удивляет своей атмосферой, где современность переплетается с историей. Узкие улочки старого города, красочные дома и потрясающие виды на океан создают неповторимый колорит.',
+    excerpt: 'Обзорно о замках Фуншала, музеях, скульптурах...',
+    country: 'Португалия',
+    city: 'Фуншал',
+    photo: '/assets/images/Rectangle 18.png',
+    userInfo: mockUsers[1],
+    created_at: getISODate(25),
+    comments: []
   },
   {
     id: 3,
-    title: "Два сезона Северной Осетии. ч. 1 — Зима",
-    content:
-      "Моя первая вылазка в Северную Осетию, январь совсем не популярный месяц тут.",
-    excerpt: "Моя первая вылазка в Северную Осетию...",
-    country: "Россия",
-    city: "Владикавказ",
-    image: "/assets/images/Rectangle23.png",
-    author: mockUsers[0],
-    createdAt: new Date().toISOString(),
-    comments: [],
-  },
-  {
-    id: 4,
-    title: "Короткое воспоминание о Монополи",
-    content: "За окном уже снег, минус четыре и рано темнеет…",
-    excerpt: "За окном уже снег, минус четыре и рано темнеет…",
-    country: "Италия",
-    city: "Монополи",
-    image: "/assets/images/Rectangle24.png",
-    author: mockUsers[0],
-    createdAt: new Date().toISOString(),
-    comments: [],
-  },
-  {
-    id: 5,
-    title: "Санкт-Петербург. Дворец Коттедж",
-    content:
-      "Дворец Коттедж и парк Александрия располагаются к востоку от центрального петергофского ансамбля.",
-    excerpt: "Дворец Коттедж и парк Александрия...",
-    country: "Россия",
-    city: "Санкт-Петербург",
-    image: "/assets/images/Rectangle25.png",
-    author: mockUsers[0],
-    createdAt: new Date().toISOString(),
-    comments: [],
-  },
-  {
-    id: 6,
-    title: "Арабская сказка: успеть за 8 часов",
-    content: "Длинная стыковка на пути в Южную Америку: знакомство с Дохой.",
-    excerpt: "Длинная стыковка на пути в Южную Америку...",
-    country: "ОАЭ",
-    city: "Дубай",
-    image: "/assets/images/Rectangle17.png",
-    author: mockUsers[0],
-    createdAt: new Date().toISOString(),
-    comments: [],
-  },
+    title: 'Два сезона Северной Осетии. ч. 1 — Зима',
+    description: 'Моя первая вылазка в Северную Осетию, январь совсем не популярный месяц тут, но с погодой очень повезло. Виды были потрясающие - заснеженные горы, чистейший воздух, гостеприимные люди. Особенно запомнился Куртатинское ущелье и средневековые башни.',
+    excerpt: 'Моя первая вылазка в Северную Осетию...',
+    country: 'Россия',
+    city: 'Владикавказ',
+    photo: '/assets/images/Rectangle 23.png',
+    userInfo: mockUsers[2],
+    created_at: getISODate(35),
+    comments: []
+  }
 ];
+
+export const getMockPosts = (page = 1, limit = 6) => {
+  const start = (page - 1) * limit;
+  const end = start + limit;
+  const paginatedPosts = mockPosts.slice(start, end);
+  
+  return {
+    data: paginatedPosts,
+    meta: {
+      current_page: page,
+      last_page: Math.ceil(mockPosts.length / limit),
+      total: mockPosts.length
+    }
+  };
+};
+
+export const getMockPostById = (id: number) => {
+  const post = mockPosts.find(p => p.id === id);
+  if (!post) {
+    throw new Error('Post not found');
+  }
+  return { data: post };
+};
+
+export const addMockComment = (postId: number, data: { full_name: string; comment: string }) => {
+  const post = mockPosts.find(p => p.id === postId);
+  if (!post) {
+    throw new Error('Post not found');
+  }
+
+  const newComment = {
+    id: (post.comments?.length || 0) + 1,
+    author_name: data.full_name,
+    comment: data.comment,
+    created_at: new Date().toISOString()
+  };
+
+  if (!post.comments) {
+    post.comments = [];
+  }
+  post.comments.push(newComment);
+
+  return { data: newComment };
+};
