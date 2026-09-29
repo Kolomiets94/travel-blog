@@ -1,87 +1,104 @@
- TravelBlog — Блог для путешественников
-Веб-приложение для обмена опытом путешествий: публикация постов, комментарии, профиль пользователя.
+# TravelBlog 🌍
 
-🔗 GitHub репозиторий: Kolomiets94/travel-blog
+A responsive travel community SPA built with **React 18** and **TypeScript**. Users can browse travel stories, create their own posts, leave comments, authenticate, and manage their profile.
 
-📋 Описание
-TravelBlog — это SPA-приложение, где пользователи могут делиться историями о путешествиях, оставлять комментарии к постам других путешественников, редактировать свой профиль и следить за активностью сообщества. Проект реализован с использованием современного стека React + TypeScript.
+## ✨ Features
 
-✨ Функционал
-Модуль	Описание
-Авторизация	Регистрация и вход с валидацией форм (React Hook Form + Yup)
-Посты	CRUD-операции: создание (с загрузкой фото), просмотр ленты, детальная страница
-Комментарии	Возможность оставлять комментарии под постами
-Профиль	Редактирование данных (ФИО, город, аватар), смена пароля
-Защита маршрутов	Приватные страницы доступны только авторизованным пользователям
-Адаптивность	Корректное отображение на всех типах устройств
-🛠️ Стек технологий
-React · TypeScript · React Router · Axios · Context API · SCSS · React Hook Form · Yup
+- User registration, login, and logout
+- Token-based authentication
+- Protected routes for authenticated users
+- Travel posts feed and detailed post pages
+- Create a post with an uploaded image
+- Add comments to travel posts
+- Edit profile information and upload an avatar
+- Change account password
+- Responsive SCSS interface
+- Loading and error states for user actions
 
-📁 Структура проекта
-text
-travel-blog/
-├── src/
-│   ├── components/       # UI-компоненты (посты, комментарии, формы)
-│   ├── context/          # Контекст для авторизации и состояния
-│   ├── hooks/            # Кастомные хуки
-│   ├── pages/            # Страницы (главная, профиль, детальная)
-│   ├── services/         # API-запросы (Axios, перехватчики)
-│   ├── styles/           # SCSS (глобальные стили, переменные)
-│   ├── types/            # TypeScript типы и интерфейсы
-│   └── App.tsx           # Роутинг и точка входа
-├── public/
-├── package.json
-└── tsconfig.json
-🚀 Запуск проекта
-Требования
-Node.js (версия 14 или выше)
+## 🛠 Tech Stack
 
-npm или yarn
+- **React 18**
+- **TypeScript**
+- **React Router**
+- **Axios**
+- **Context API**
+- **React Hook Form**
+- **Yup**
+- **SCSS**
+- **REST API**
 
-Установка и запуск
-Клонировать репозиторий
+## 🔎 Technical Highlights
 
-bash
+### Authentication and protected routes
+Authentication state is managed through a dedicated `AuthContext`. Private pages such as profile management and post creation are protected with a reusable `ProtectedRoute` component.
+
+### API layer
+API requests are separated into dedicated modules for authentication, posts, and user data. A shared Axios instance automatically attaches the authentication token to requests.
+
+The response interceptor handles unauthorized (`401`) responses by clearing stored authentication data and redirecting the user to the login page.
+
+### Typed API interaction
+Post, comment, and user data are represented with TypeScript types. API functions use typed Axios responses to keep data handling explicit.
+
+### File uploads
+New travel posts are submitted using `FormData`, including an uploaded JPEG/PNG image. Profile editing also supports avatar uploads with a local preview.
+
+### Reusable UI
+The application contains reusable UI components including buttons, form fields, the header, hero section, success modal, and protected-route wrapper.
+
+## 📁 Project Structure
+
+```text
+src/
+├── api/          # Axios configuration and API modules
+├── components/   # Reusable and feature components
+├── context/      # Authentication context
+├── pages/        # Application pages
+├── types/        # TypeScript types
+├── utils/        # Constants and shared configuration
+├── App.tsx       # Routing
+└── App.scss
+```
+
+## 🚀 Run Locally
+
+### Requirements
+
+- Node.js
+- npm
+
+### Installation
+
+```bash
 git clone https://github.com/Kolomiets94/travel-blog.git
 cd travel-blog
-Установить зависимости
-
-bash
 npm install
-Запустить приложение
-
-bash
 npm start
-Приложение откроется по адресу: http://localhost:3000
+```
 
-🔗 API взаимодействие
-Приложение общается с REST API через Axios. Для авторизованных запросов используются перехватчики (interceptors), автоматически подставляющие токен в заголовки.
+The development server starts at `http://localhost:3000`.
 
-Основные эндпоинты:
+> **API note:** the current project is configured to use the TravelBlog API at `http://travelblog.skillbox.cc/api`. API availability is required for authentication and server-backed features.
 
-Метод	URL	Описание
-POST	/api/register	Регистрация
-POST	/api/login	Авторизация
-GET	/api/posts	Получение всех постов
-POST	/api/posts	Создание поста
-GET	/api/posts/:id	Детальная страница поста
-PUT	/api/profile	Редактирование профиля
-🛠️ Разработка и кодстайл
-Типизация: строгая TypeScript (без any)
+## 🔌 Main API Operations
 
-Стилизация: SCSS, адаптивная вёрстка
+| Method | Endpoint | Purpose |
+| --- | --- | --- |
+| POST | `/register` | Register a user |
+| POST | `/login` | Authenticate a user |
+| GET | `/logout` | Log out |
+| GET | `/user` | Load the current profile |
+| POST | `/user` | Update profile data |
+| PATCH | `/user/password` | Change password |
+| GET | `/posts` | Load travel posts |
+| POST | `/posts` | Create a travel post |
+| GET | `/posts/:id` | Load a single post |
+| POST | `/posts/:id/comments` | Add a comment |
 
-Формы: React Hook Form + Yup для валидации
+## 👨‍💻 Author
 
-Состояние: Context API для глобальных данных (пользователь, авторизация)
+**Alexander Kolomiets** — Junior Frontend Developer
 
-Маршрутизация: React Router с защитой приватных страниц
-
-👤 Контактная информация
-Александр Коломиец
-
-Email: Kolomiets94@yandex.ru
-
-Telegram: @Kolomiets94
-
-GitHub: github.com/Kolomiets94
+- GitHub: [Kolomiets94](https://github.com/Kolomiets94)
+- Email: Kolomiets94@yandex.ru
+- Telegram: @Kolomiets94
