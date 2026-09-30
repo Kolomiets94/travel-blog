@@ -8,7 +8,7 @@ export const mockUsers: User[] = [
     city: 'Москва',
     country: 'Россия',
     bio: 'Путешественник со стажем',
-    photo: '/assets/images/Ellipse 1.png'
+    photo: `${process.env.PUBLIC_URL || ''}/assets/images/Ellipse1.png`
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const mockUsers: User[] = [
     city: 'Санкт-Петербург',
     country: 'Россия',
     bio: 'Фотограф и блогер',
-    photo: '/assets/images/Ellipse 1.png'
+    photo: `${process.env.PUBLIC_URL || ''}/assets/images/Ellipse1.png`
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ export const mockUsers: User[] = [
     city: 'Москва',
     country: 'Россия',
     bio: 'Люблю путешествовать',
-    photo: '/assets/images/Ellipse 1.png'
+    photo: `${process.env.PUBLIC_URL || ''}/assets/images/Ellipse1.png`
   }
 ];
 
@@ -44,7 +44,7 @@ export const mockPosts: Post[] = [
     excerpt: 'Говорят, что Венецию покинуло 70% местных жителей...',
     country: 'Италия',
     city: 'Венеция',
-    photo: '/assets/images/Rectangle 17.png',
+    photo: `${process.env.PUBLIC_URL || ''}/assets/images/Rectangle17.png`,
     userInfo: mockUsers[0],
     created_at: getISODate(15),
     comments: [
@@ -69,7 +69,7 @@ export const mockPosts: Post[] = [
     excerpt: 'Обзорно о замках Фуншала, музеях, скульптурах...',
     country: 'Португалия',
     city: 'Фуншал',
-    photo: '/assets/images/Rectangle 18.png',
+    photo: `${process.env.PUBLIC_URL || ''}/assets/images/Rectangle18.png`,
     userInfo: mockUsers[1],
     created_at: getISODate(25),
     comments: []
@@ -81,7 +81,7 @@ export const mockPosts: Post[] = [
     excerpt: 'Моя первая вылазка в Северную Осетию...',
     country: 'Россия',
     city: 'Владикавказ',
-    photo: '/assets/images/Rectangle 23.png',
+    photo: `${process.env.PUBLIC_URL || ''}/assets/images/Rectangle23.png`,
     userInfo: mockUsers[2],
     created_at: getISODate(35),
     comments: []
