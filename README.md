@@ -1,5 +1,7 @@
 # TravelBlog 🌍
 
+**Live Demo:** https://kolomiets94.github.io/travel-blog/
+
 A responsive travel community SPA built with **React 18** and **TypeScript**. Users can browse travel stories, create their own posts, leave comments, authenticate, and manage their profile.
 
 ## ✨ Features
@@ -78,7 +80,7 @@ npm start
 
 The development server starts at `http://localhost:3000`.
 
-> **API note:** the current project is configured to use the TravelBlog API at `http://travelblog.skillbox.cc/api`. API availability is required for authentication and server-backed features.
+> **Live demo note:** GitHub Pages runs in portfolio demo mode with bundled travel stories because the original training API is HTTP-only. The source code still contains the real REST API integration used for authentication and server-backed features.
 
 ## 🔌 Main API Operations
 
