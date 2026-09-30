@@ -24,11 +24,9 @@ const LoginPage: React.FC = () => {
     try {
       setIsLoading(true);
       setError("");
-      console.log("Trying to login with:", email);
       await login(email, password);
-      console.log("Login successful, navigating to home");
       navigate("/");
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Login error:", err);
       setError("Неверный email или пароль");
     } finally {
