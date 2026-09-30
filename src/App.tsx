@@ -12,8 +12,11 @@ import ProfilePage from './pages/Profile/ProfilePage';
 import './App.scss';
 
 function App() {
+  const basename = process.env.PUBLIC_URL || '/';
+
   return (
     <BrowserRouter
+      basename={basename}
       future={{
         v7_startTransition: true,
         v7_relativeSplatPath: true,
@@ -26,22 +29,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/posts/:id" element={<PostPage />} />
-          <Route
-            path="/create-post"
-            element={
-              <ProtectedRoute>
-                <CreatePostPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <ProfilePage />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/create-post" element={<ProtectedRoute><CreatePostPage /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
