@@ -13,7 +13,7 @@ const PostCard: React.FC<PostCardProps> = ({ post, onReadMore }) => {
       ? post.description.substring(0, 100) + '...' 
       : post.description);
 
-  const imageUrl = post.photo || '/assets/images/Rectangle17.png';
+  const imageUrl = post.photo || `${process.env.PUBLIC_URL || ''}/assets/images/Rectangle17.png`;
 
   return (
     <article className="post-card">
