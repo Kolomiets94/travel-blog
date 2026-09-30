@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import Hero from '../../components/common/Hero/Hero';
 import FormField from '../../components/common/FormField/FormField';
@@ -24,11 +25,12 @@ const RegisterPage: React.FC = () => {
 
     try {
       setError('');
-      await register(email, password); // Отправляем только email и password
+      await register(email, password);
       navigate('/');
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Register error:', err);
-      setError(err.response?.data?.message || 'Ошибка регистрации');
+      const message = axios.isAxiosError(err) ? err.response?.data?.message : undefined;
+      setError(message || 'Ошибка регистрации');
     }
   };
 
