@@ -4,6 +4,7 @@ import { useAuth } from '../../../context/AuthContext';
 import './Header.scss';
 
 const asset = (path: string) => `${process.env.PUBLIC_URL || ''}${path}`;
+const isDemoMode = process.env.REACT_APP_DEMO_MODE === 'true';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +23,11 @@ const Header: React.FC = () => {
         </Link>
         <nav className="header__nav">
           {!isAuthenticated ? (
-            <Link to="/login" className="header__login">Войти</Link>
+            isDemoMode ? (
+              <span className="header__login" title="Portfolio demo uses static data">Демо-режим</span>
+            ) : (
+              <Link to="/login" className="header__login">Войти</Link>
+            )
           ) : (
             <div className="header__user">
               <button className="header__user-btn" onClick={() => setMenuOpen(!menuOpen)}>
